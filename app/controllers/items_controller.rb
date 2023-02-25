@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
   def index
-    @data = AirConditionersScraper.new.call
+    @items = Item.order(:kwc)
   end
 end

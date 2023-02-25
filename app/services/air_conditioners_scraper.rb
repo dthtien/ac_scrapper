@@ -1,17 +1,16 @@
 class AirConditionersScraper
-  BASE_URL = 'https://www.airwaresales.com.au/shop/'
+  BASE_URL = 'https://www.airwaresales.com.au/shop/'.freeze
 
   def call
-    data = []
+    Item.delete_all
+
     [
       "#{BASE_URL}?pwb-brand=fujitsu",
       "#{BASE_URL}?pwb-brand=mitsubishi-air-conditioner",
       "#{BASE_URL}?pwb-brand=kelvinator"
     ].each do |url|
-      data += build_data(url)
+      build_data(url)
     end
-
-    data.sort_by { |d| d[:kwc] }
   end
 
   private
@@ -31,8 +30,6 @@ class AirConditionersScraper
       end
       next_url = html.css('.page-numbers .next.page-numbers')&.attr('href')&.value
     end
-
-    data.compact
   end
 
   def fetch_page(url)
@@ -76,10 +73,10 @@ class AirConditionersScraper
     downcase_title = title.downcase
     return if !downcase_title.include?('srk') && !downcase_title.include?('astg') && !downcase_title.include?('ksd')
 
-    {
+    Item.create(
       title: title,
       kwc: kwc,
       price: price
-    }
+    )
   end
 end
