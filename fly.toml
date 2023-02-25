@@ -39,3 +39,6 @@ processes = []
 [[statics]]
   guest_path = "/rails/public"
   url_prefix = "/"
+
+[deploy]
+  release_command = "bin/rails db:prepare"
