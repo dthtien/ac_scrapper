@@ -1,3 +1,18 @@
-<div style="margin: 10px">
-  <%= item.title.html_safe %>
+<div style="margin: 10px; padding: 5px; border: 1px">
+  <h3>
+    <%= item.title %>
+  </h3>
+
+  <p>
+    <strong> Account price: </strong>
+    $<%= item.price %>
+  </p>
+
+  <p>
+    <strong> Original price: </strong>
+    <i>
+      <%= item.original_price_details %>
+    </i>
+  </p>
 </div>
+<hr>

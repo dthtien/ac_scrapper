@@ -3,7 +3,7 @@ class AirConditionersScraper
 
   def call
     Item.delete_all
-
+    login
     [
       "#{BASE_URL}?pwb-brand=fujitsu",
       "#{BASE_URL}?pwb-brand=mitsubishi-air-conditioner",
@@ -33,7 +33,7 @@ class AirConditionersScraper
   end
 
   def fetch_page(url)
-    response = Faraday.get(url)
+    response = agent.get(url)
     Nokogiri::HTML(response.body)
   end
 
@@ -64,19 +64,30 @@ class AirConditionersScraper
     price = item.css('.price ins').text
     price = item.css('.price .amount').text if price.blank?
     price = price.gsub('$', '').gsub(',', '').to_f
+    original_price = item.css('.mk-shop-item-detail i').text
 
-    title = %{
-      #{text.join(' ')}
-      <span style=' color: red; font-weight: bold;'>$#{price}</span>
-      <span style=' color: blue; font-weight: bold;'>$#{(price * 0.895).round(2)}</span>
-    }
+    title = text.join(' ')
     downcase_title = title.downcase
     return if !downcase_title.include?('srk') && !downcase_title.include?('astg') && !downcase_title.include?('ksd')
 
     Item.create(
+      original_price_details: original_price,
       title: title,
       kwc: kwc,
       price: price
     )
+  end
+
+  def login
+    page = agent.get(BASE_URL)
+    form = page.form_with(name: 'mk_login_form')
+    form.field_with(name: 'log').value = ENV['UN']
+    form.field_with(name: 'pwd').value = ENV['PW']
+
+    agent.submit(form, form.button_with(name: 'submit_button'))
+  end
+
+  def agent
+    @agent ||= Mechanize.new
   end
 end
