@@ -7,7 +7,8 @@ class AirConditionersScraper
     [
       "#{BASE_URL}?pwb-brand=fujitsu",
       "#{BASE_URL}?pwb-brand=mitsubishi-air-conditioner",
-      "#{BASE_URL}?pwb-brand=kelvinator"
+      "#{BASE_URL}?pwb-brand=kelvinator",
+      "#{BASE_URL}?pwb-brand=bonaire"
     ].each do |url|
       build_data(url)
     end
@@ -51,12 +52,15 @@ class AirConditionersScraper
 
     return kwc if kwc
 
-    0
+    0.to_s
   end
 
   def parse_data(item)
     text = item.css('.mk-shop-item-detail').text.split
     text.pop(10)
+
+    title = text.join(' ')
+    return unless valid_title?(title.downcase)
 
     kwc = parse_kw(text)&.downcase&.gsub('kW(C)', '')&.gsub('kw', '').to_f
     return if kwc >= 10
@@ -66,9 +70,6 @@ class AirConditionersScraper
     price = price.gsub('$', '').gsub(',', '').to_f
     original_price = item.css('.mk-shop-item-detail i').text
 
-    title = text.join(' ')
-    downcase_title = title.downcase
-    return if !downcase_title.include?('srk') && !downcase_title.include?('astg') && !downcase_title.include?('ksd')
 
     Item.create(
       original_price_details: original_price,
@@ -85,6 +86,10 @@ class AirConditionersScraper
     form.field_with(name: 'pwd').value = ENV['PW']
 
     agent.submit(form, form.button_with(name: 'submit_button'))
+  end
+
+  def valid_title?(title)
+    title.include?('srk') || title.include?('astg') || title.include?('ksd') || title.include?('optima')
   end
 
   def agent
