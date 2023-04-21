@@ -1,0 +1,22 @@
+{
+  "lib/*.rb": {
+    "alternate": "spec/lib/{}_spec.rb",
+    "type": "source"
+  },
+  "lib/*.rake": {
+    "alternate": "spec/lib/{}_rake_spec.rb",
+    "type": "source"
+  },
+  "app/*.rb": {
+    "alternate": "spec/{}_spec.rb",
+    "type": "source"
+  },
+  "spec/*_rake_spec.rb": {
+    "alternate": "{}.rake",
+    "type": "spec"
+  },
+  "spec/*_spec.rb": {
+    "alternate": ["{}.rb", "app/{}.rb"],
+    "type": "spec"
+  }
+}
