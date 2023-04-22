@@ -11,6 +11,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <form action="<%= root_path(turbo_frame: 'items') %>" method="get" data-turbo-frame="items">
+        <label for 'search_query'>Query:</label>
+        <input id="search_query" name="query" type="search" value="<%= params[:query]%>" pattern=".*\w+.*" required/>
+        <input type="submit" value="Search"/>
+      </form>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
