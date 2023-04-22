@@ -5,14 +5,10 @@ describe ItemsController, type: :controller do
   describe 'GET #index' do
     let(:items) { create_list(:item, 3) }
 
-    before do
-      allow(Item).to receive(:order).and_return(items)
-    end
-
     it 'renders items' do
+      expect(Item).to receive_message_chain(:search, :order).and_return(items)
       get :index
 
-      expect(Item).to have_received(:order)
       expect(response).to have_http_status 200
     end
   end
