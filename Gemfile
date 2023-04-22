@@ -76,6 +76,7 @@ group :test do
   gem "webdrivers"
   gem 'vcr'
   gem 'webmock', '~> 3.13'
+  gem "factory_bot_rails"
 end
 
 gem "dockerfile-rails", ">= 1.0", :group => :development
