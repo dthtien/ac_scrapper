@@ -24,32 +24,30 @@ services:
       # - "6379:6379"
 
   migration: &migration
-    container_name: hothealth-migration
+    container_name: migration
+    restart: on-failure:10
     build:
       context: .
       dockerfile: Dockerfile
+    depends_on:
+      - db
     volumes:
       - .:/app
       - rails_cache:/app/tmp/cache
       - bundle:/usr/local/bundle
-      - ~/.ssh:/root/.ssh:ro
       - node_modules:/app/node_modules
       - assets:/app/public/assets
 
     environment:
       AC_SCRAPPER_DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
-
     command: bundle exec rake db:create db:migrate
-    depends_on:
-      - db
 
   backend: &backend
     <<: *migration
     container_name: backend
     depends_on:
       - db
-      # - redis
       - migration
     command: bundle exec rails s -b 0.0.0.0 -p 3000
     ports:
