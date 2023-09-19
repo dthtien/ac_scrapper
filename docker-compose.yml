@@ -1,0 +1,76 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: database
+    restart: on-failure
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./log:/root/log:cached
+    ports:
+      - "5433:5432"
+
+  # redis:
+    # image: redis:alpine
+    # container_name: redis
+    # restart: on-failure
+    # volumes:
+      # - redis:/data
+    # ports:
+      # - "6379:6379"
+
+  migration: &migration
+    container_name: hothealth-migration
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - rails_cache:/app/tmp/cache
+      - bundle:/usr/local/bundle
+      - ~/.ssh:/root/.ssh:ro
+      - node_modules:/app/node_modules
+      - assets:/app/public/assets
+
+    command: bundle exec rake db:create db:migrate
+    depends_on:
+      - db
+
+  backend: &backend
+    <<: *migration
+    container_name: backend
+    depends_on:
+      - db
+      # - redis
+      - migration
+    command: bundle exec rails s -b 0.0.0.0 -p 3000
+    ports:
+      - 3000:3000
+
+  # sidekiq:
+    # <<: *backend
+    # container_name: hothealth-sidekiq
+    # command: bundle exec sidekiq -C config/sidekiq.yml
+    # volumes:
+      # - sidekiq-logs:/app/log
+    # depends_on:
+      # - db
+      # - redis
+      # - migration
+    # ports:
+      # - 3001:3000
+
+
+volumes:
+  bundle:
+  postgres_data: {}
+  node_modules:
+  # redis:
+  rails_cache:
+  # sidekiq-logs:
+  assets:
+
