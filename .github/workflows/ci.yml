@@ -17,7 +17,10 @@ jobs:
         image: postgres:15
         ports: ["5432:5432"]
         env:
-          POSTGRES_PASSWORD: pwd
+          POSTGRES_PASSWORD: ""
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -26,7 +29,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
+      - name: Setup DB, Run tests
+        env:
+          RAILS_ENV: test
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
