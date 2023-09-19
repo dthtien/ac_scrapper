@@ -82,5 +82,4 @@ test:
 production:
   <<: *default
   database: ac_scrapper_production
-  username: ac_scrapper
   password: <%= ENV["AC_SCRAPPER_DATABASE_PASSWORD"] %>
