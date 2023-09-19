@@ -40,7 +40,7 @@ services:
     environment:
       AC_SCRAPPER_DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
 
-    command: bundle exec rake db:create db:migrate
+    command: SECRET_KEY_BASE=${SECRET_KEY_BASE} bundle exec rake db:create db:migrate
     depends_on:
       - db
 
