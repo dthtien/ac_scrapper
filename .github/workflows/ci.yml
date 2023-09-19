@@ -9,7 +9,36 @@ on:
       - '**'
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        ports: ["5432:5432"]
+        env:
+          POSTGRES_PASSWORD: pwd
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0
+          bundler-cache: true
+      - name: Preparing database
+        run: bundle exec rake db:setup
+
+      - name: Run tests
+        run: bundle exec rspec
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: executing remote ssh commands using ssh key
