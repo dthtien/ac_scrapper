@@ -81,5 +81,6 @@ test:
 #
 production:
   <<: *default
+  host: db
   database: ac_scrapper_production
   password: <%= ENV["AC_SCRAPPER_DATABASE_PASSWORD"] %>
