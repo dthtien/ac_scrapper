@@ -23,6 +23,8 @@ jobs:
             git pull origin main
             export POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
             export SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
+            export UN=${{ secrets.UN }}
+            export PW=${{ secrets.PW }}
             docker compose down
             docker compose up -d --build
             docker ps
