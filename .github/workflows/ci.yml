@@ -41,6 +41,7 @@ jobs:
 
       - name: Run tests
         run: bundle exec rspec
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
