@@ -60,11 +60,20 @@ module Scrapers
       price = price.gsub('$', '').gsub(',', '').to_f
       original_price = item.css("#{ITEM_SELECTOR} i").text
 
+      image_url = nil
+      images_selector = item.css('img.product-loop-image')
+      images = images_selector.attr('data-mk-image-src-set')&.value
+      if images.present?
+        images = JSON.parse(images)
+        image_url = images['2x'] || images['default'] || images_selector.attr('src')&.value
+      end
+
       Item.create(
         original_price_details: original_price,
         title: title,
         kwc: kwc,
-        price: price
+        price: price,
+        image_url: image_url
       )
     end
 
