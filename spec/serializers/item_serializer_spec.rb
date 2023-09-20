@@ -12,7 +12,8 @@ describe ItemSerializer do
           title: item.title,
           kwc: item.kwc,
           price: item.price,
-          original_price_details: item.original_price_details
+          original_price_details: item.original_price_details,
+          image_url: item.image_url
         },
         id: item.id.to_s,
         type: :item
