@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :items, only: [:index] do
         collection do
-          resource :refresh, only: :update, controller: 'items/refresh'
+          resource :refresh, only: :update, controller: 'items/refreshes'
         end
       end
     end
