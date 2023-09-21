@@ -57,7 +57,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: web.DockerFile
+      dockerfile: web.Dockerfile
     depends_on:
       - backend
     ports:
