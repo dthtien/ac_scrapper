@@ -54,6 +54,16 @@ services:
     command: bundle exec rails s -b 0.0.0.0 -p 3000
     ports:
       - 3000:3000
+  web:
+    build:
+      context: .
+      dockerfile: web.DockerFile
+    depends_on:
+      - app
+    ports:
+      - 80:80
+    volumes:
+      - nginx_log:/var/www/app_name
 
   # sidekiq:
     # <<: *backend
@@ -71,8 +81,8 @@ services:
 
 volumes:
   bundle:
-  postgres_data: {}
   postgres_data_1: {}
+  nginx_log:
   node_modules:
   # redis:
   rails_cache:
