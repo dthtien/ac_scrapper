@@ -59,7 +59,7 @@ services:
       context: .
       dockerfile: web.DockerFile
     depends_on:
-      - app
+      - backend
     ports:
       - 80:80
     volumes:
