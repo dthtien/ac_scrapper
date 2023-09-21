@@ -54,6 +54,7 @@ services:
     command: bundle exec rails s -b 0.0.0.0 -p 3000
     ports:
       - 3000:3000
+
   web:
     build:
       context: .
@@ -62,8 +63,27 @@ services:
       - backend
     ports:
       - 80:80
+      - 433:433
     volumes:
-      - nginx_log:/var/www/app_name
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - dhparam:/etc/ssl/certs
+      - web-root:/var/www/app_name
+    networks:
+      - app-network
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/app_name
+    depends_on:
+      - web
+    command: certonly --webroot --webroot-path=/var/www/app_name --email tiendt2311@gmail.com --agree-tos --no-eff-email --force-renewal -d ac.tcyrus.com
+    networks:
+      - app-network
 
   # sidekiq:
     # <<: *backend
@@ -82,10 +102,21 @@ services:
 volumes:
   bundle:
   postgres_data_1: {}
-  nginx_log:
+  web-root:
   node_modules:
   # redis:
   rails_cache:
   # sidekiq-logs:
   assets:
+  certbot-etc:
+  certbot-var:
+  dhparam:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ubuntu/ac_scrapper/dhparam/
+      o: bind
 
+networks:
+  app-network:
+    driver: bridge
