@@ -65,6 +65,7 @@ services:
       dockerfile: web.Dockerfile
     depends_on:
       - backend
+    restart: on-failure
     ports:
       - 80:80
       - 433:433
