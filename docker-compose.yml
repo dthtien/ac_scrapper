@@ -80,6 +80,7 @@ services:
   certbot:
     image: certbot/certbot
     container_name: certbot
+    restart: on-failure:3
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
