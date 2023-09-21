@@ -21,6 +21,7 @@ COPY nginx.conf /tmp/docker.nginx
 # substitute variable references in the Nginx config template for real values from the environment
 # put the final config in its place
 RUN envsubst '$RAILS_ROOT' < /tmp/docker.nginx > /etc/nginx/conf.d/default.conf
+RUN mkdir -p /var/www/letsencrypt/.well-known/acme-challenge
 
 EXPOSE 80
 
