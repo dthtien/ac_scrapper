@@ -85,7 +85,7 @@ services:
       - web-root:/var/www/app_name
     depends_on:
       - web
-    command: certonly --webroot --webroot-path=/var/www/app_name --email tiendt2311@gmail.com --agree-tos --no-eff-email --force-renewal -d ac.tcyrus.com
+    command: certonly --webroot --webroot-path=/var/www/app_name --email tiendt2311@gmail.com --agree-tos --no-eff-email --force-renewal -d ac.tcyrus.dev
     networks:
       - app-network
 
