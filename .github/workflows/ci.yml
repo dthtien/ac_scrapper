@@ -59,6 +59,7 @@ jobs:
             export SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
             export UN=${{ secrets.UN }}
             export PW=${{ secrets.PW }}
+            docker image prune -af
             docker compose down
             docker compose up -d --build
             docker ps
