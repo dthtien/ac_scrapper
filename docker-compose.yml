@@ -68,7 +68,7 @@ services:
     restart: on-failure:3
     ports:
       - 80:80
-      - 433:433
+      - 443:443
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
