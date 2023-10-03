@@ -57,6 +57,7 @@ jobs:
             git pull origin main
             export POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
             export SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
+            export MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}
             export UN=${{ secrets.UN }}
             export PW=${{ secrets.PW }}
             docker image prune -af
