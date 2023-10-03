@@ -14,6 +14,8 @@ Rails.application.routes.draw do
           resource :refresh, only: :update, controller: 'items/refreshes'
         end
       end
+
+      resource :contact, only: :create
     end
   end
 end
