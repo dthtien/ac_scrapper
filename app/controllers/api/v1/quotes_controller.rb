@@ -3,6 +3,8 @@
 module Api
   module V1
     class QuotesController < ApplicationController
+      skip_before_action :verify_authenticity_token
+
       def create
         service = Quotes::Create.new(quote_params)
         service.call
@@ -17,7 +19,7 @@ module Api
       private
 
       def quote_params
-        params.slice(:division, :storey, :address, :email, :name, :phone)
+        params.slice(:division, :storey, :address, :email, :name, :phone).permit!
       end
     end
   end
