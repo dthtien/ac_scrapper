@@ -18,4 +18,3 @@ describe Api::V1::ItemsController, type: :controller do
     end
   end
 end
-

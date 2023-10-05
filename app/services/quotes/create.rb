@@ -2,24 +2,27 @@
 
 module Quotes
   class Create < BaseService
+    attr_reader :quote
+
     def initialize(params)
       super()
       @params = params
     end
 
     def call
-      ActiveRecord::Base.transaction do
-        quote = Quote.new(quote_params)
-        user.assign_attributes(user_params)
-        user.save!
-        quote.user = user
+      @quote = Quote.new(quote_params)
+      user.assign_attributes(user_params)
 
-        quote.save!
+      ActiveRecord::Base.transaction do
+        user.save!
+
+        @quote.user = user
+        @quote.save!
       end
 
       self
     rescue ActiveRecord::RecordInvalid => e
-      @errors = e.message
+      @errors << e.message
     end
 
     private
