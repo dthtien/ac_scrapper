@@ -3,10 +3,7 @@ Rails.application.routes.draw do
   namespace :items do
     resource :refresh, only: :update
   end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
   namespace :api do
     namespace :v1 do
       resources :items, only: [:index] do
@@ -16,6 +13,7 @@ Rails.application.routes.draw do
       end
 
       resource :contact, only: :create
+      resources :quotes, only: :create
     end
   end
 end
