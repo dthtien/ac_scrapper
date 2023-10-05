@@ -8,4 +8,8 @@ RSpec.describe User, type: :model do
       should validate_uniqueness_of(:email)
     end
   end
+
+  context 'associations' do
+    it { should have_many(:quotes) }
+  end
 end
