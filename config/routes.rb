@@ -6,9 +6,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :items, only: [:index] do
+      resources :items, only: %i[index show] do
         collection do
-          resource :refresh, only: :update, controller: 'items/refreshes'
+          resource :refresh, only: %i[update], controller: 'items/refreshes'
         end
       end
 

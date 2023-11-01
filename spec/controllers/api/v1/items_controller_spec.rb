@@ -17,4 +17,26 @@ describe Api::V1::ItemsController, type: :controller do
       expect(last_updated_at).to be_present
     end
   end
+
+  describe 'GET #show' do
+    let(:item) { create(:item) }
+
+    context 'when item exists' do
+      before { get :show, params: { id: item.id } }
+      it do
+        expect(response).to have_http_status 200
+        json_response = JSON.parse(response.body)
+        expect(json_response['data']['id'].to_i).to eq item.id
+      end
+    end
+
+    context 'when item does not exist' do
+      before { get :show, params: { id: 0 } }
+      it do
+        expect(response).to have_http_status 404
+        json_response = JSON.parse(response.body)
+        expect(json_response['error']).to eq 'Item not found'
+      end
+    end
+  end
 end
