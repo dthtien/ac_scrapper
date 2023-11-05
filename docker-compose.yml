@@ -121,7 +121,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/ubuntu/dhparam/
+      device: /home/deploy/dhparam/
       o: bind
 
 networks:

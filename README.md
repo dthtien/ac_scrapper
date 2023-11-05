@@ -35,8 +35,8 @@ To run this application locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/airwaresales.git
-   cd airwaresales
+   git clone git@github.com:dthtien/ac_scrapper.git
+   cd ac_scrapper
    ```
 2. Install Docker on your local machine if you haven't already: [Docker Installation Guide](https://docs.docker.com/get-docker/)
 
