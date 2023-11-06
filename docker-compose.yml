@@ -73,7 +73,7 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
-      - dhparam:/etc/ssl/certs
+      # - dhparam:/etc/ssl/certs
       - web-root:/var/www/app_name
     networks:
       - app-network
@@ -117,12 +117,12 @@ volumes:
   assets:
   certbot-etc:
   certbot-var:
-  dhparam:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/deploy/dhparam/
-      o: bind
+  # dhparam:
+    # driver: local
+    # driver_opts:
+      # type: none
+      # device: /home/deploy/dhparam/
+      # o: bind
 
 networks:
   app-network:
