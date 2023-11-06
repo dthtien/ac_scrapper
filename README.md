@@ -1,4 +1,5 @@
 # Airwaresales Air Condition Details Scraper
+[![Build Status](https://github.com/dthtien/ac_scrapper/actions/workflows/ci.yml/badge.svg)](https://github.com/dthtien/ac_scrapper/actions)
 
 ## Table of Contents
 
