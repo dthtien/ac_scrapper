@@ -78,7 +78,7 @@ module Scrapers
     end
 
     def valid_title?(title)
-      title.include?('srk') || title.include?('astg') || title.include?('ksd') || title.include?('optima')
+      title.include?('dxk') || title.include?('astg') || title.include?('ksd') || title.include?('optima')
     end
 
     def adapter

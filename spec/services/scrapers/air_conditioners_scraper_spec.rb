@@ -36,7 +36,7 @@ describe Scrapers::AirConditionersScraper do
       <div class="mk-shop-item-detail">
 
 
-      <h3 class="product-title"><a href="https://www.airwaresales.com.au/product/lg-ws18tws/">LG SRKWS18TWS</a></h3>
+      <h3 class="product-title"><a href="https://www.airwaresales.com.au/product/lg-ws18tws/">LG DXKWS18TWS</a></h3>
 
       4.8kW(C)/5.9kW(H)
       <div class="pwb-brands-in-loop"><span><a href="https://www.airwaresales.com.au/brand/air-conditioners/lg/">LG Air Conditioners</a></span></div>
