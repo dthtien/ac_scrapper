@@ -9,7 +9,11 @@ module Scrapers
       reset_items
       adapter.login
 
-      AirWareSalesAdapter::BRAND_URLS.each { |url| build_data(url) }
+      Async do
+        AirWareSalesAdapter::BRAND_URLS.each do |url|
+          Async { build_data(url) }
+        end
+      end
     end
 
     private
@@ -20,7 +24,6 @@ module Scrapers
 
     def build_data(base_url)
       next_url = fetch_data(base_url)
-
       next_url = fetch_data(next_url) while next_url
     end
 
