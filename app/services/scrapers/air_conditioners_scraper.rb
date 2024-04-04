@@ -34,7 +34,7 @@ module Scrapers
     end
 
     def create_items(html)
-      html.css('.item').each { |item| create_item(item) }
+      html.css('.product').each { |item| create_item(item) }
     end
 
     def parse_kw(text)
@@ -49,27 +49,20 @@ module Scrapers
     end
 
     def create_item(item)
-      text = item.css(ITEM_SELECTOR).text.split
-      text.pop(10)
-
-      title = text.join(' ')
+      title = item.css('.woocommerce-loop-product__title').text
       return unless valid_title?(title.downcase)
 
-      kwc = parse_kw(text)&.downcase&.gsub('kW(C)', '')&.gsub('kw', '').to_f
+      kwc = parse_kw(title.split).gsub(/[^0-9\.]/, '').to_f
       return if kwc >= 10
 
       price = item.css('.price ins').text
       price = item.css('.price .amount').text if price.blank?
       price = price.gsub('$', '').gsub(',', '').to_f
-      original_price = item.css("#{ITEM_SELECTOR} i").text
+      original_price = item.css(".astra-shop-summary-wrap i").text
 
-      image_url = nil
-      images_selector = item.css('img.product-loop-image')
-      images = images_selector.attr('data-mk-image-src-set')&.value
-      if images.present?
-        images = JSON.parse(images)
-        image_url = images['2x'] || images['default'] || images_selector.attr('src')&.value
-      end
+
+      images_selector = item.css('img.attachment-woocommerce_thumbnail')
+      image_url = images_selector.attr('src')&.value
 
       Item.create(
         original_price_details: original_price,

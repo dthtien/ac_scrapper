@@ -2,6 +2,7 @@
 
 class AirWareSalesAdapter < ApplicationAdapter
   BASE_URL = 'https://www.airwaresales.com.au/shop/'
+  LOGIN_URL = 'https://www.airwaresales.com.au/my-account/'
   BRAND_URLS = [
     "#{BASE_URL}?pwb-brand=fujitsu",
     "#{BASE_URL}?pwb-brand=mitsubishi-air-conditioner",
@@ -15,11 +16,11 @@ class AirWareSalesAdapter < ApplicationAdapter
   end
 
   def login
-    page = agent.get(BASE_URL)
-    form = page.form_with(name: 'mk_login_form')
-    form.field_with(name: 'log').value = ENV['UN']
-    form.field_with(name: 'pwd').value = ENV['PW']
+    page = agent.get(LOGIN_URL)
+    form = page.forms.first
+    form.field_with(name: 'username').value = ENV['UN']
+    form.field_with(name: 'password').value = ENV['PW']
 
-    agent.submit(form, form.button_with(name: 'submit_button'))
+    agent.submit(form, form.button_with(name: 'login'))
   end
 end
