@@ -65,10 +65,10 @@ module Scrapers
       image_url = images_selector.attr('src')&.value
 
       Item.create(
-        original_price_details: original_price,
+        original_price_details: price,
         title: title,
         kwc: kwc,
-        price: price,
+        price: 'NA',
         image_url: image_url
       )
     end

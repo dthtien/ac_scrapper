@@ -32,32 +32,19 @@ describe Scrapers::AirConditionersScraper do
       <p class="mk-login-status"></p>
       </form>
       </div>
-      <div class="item">
-      <div class="mk-shop-item-detail">
-
-
-      <h3 class="product-title"><a href="https://www.airwaresales.com.au/product/lg-ws18tws/">LG DXKWS18TWS</a></h3>
-
-      4.8kW(C)/5.9kW(H)
-      <div class="pwb-brands-in-loop"><span><a href="https://www.airwaresales.com.au/brand/air-conditioners/lg/">LG Air Conditioners</a></span></div>
-      <span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>1,269.00</bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>1,199.00</bdi></span></ins> <small class="woocommerce-price-suffix">inc GST</small></span>
-
-        <div class="product-item-footer without-rating">
-      </a><a rel="nofollow" href="?add-to-cart=8561" data-quantity="1" data-product_id="8561" data-product_sku="191-1-2-2-1-1" class="product_loop_button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="8561" data-product_sku="191-1-2-2-1-1" aria-label="Add &ldquo;LG WS18TWS&rdquo; to your cart" rel="nofollow"><svg  class="mk-svg-icon" data-name="mk-moon-cart-plus" data-cacheid="icon-64434834635bb" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 96h-272c-16.138 0-29.751 12.018-31.753 28.031l-28.496 227.969h-51.751c-17.673 0-32 14.327-32 32s14.327 32 32 32h80c16.138 0 29.751-12.017 31.753-28.031l28.496-227.969h219.613l57.369 200.791c4.854 16.993 22.567 26.832 39.56 21.978 16.993-4.855 26.833-22.567 21.978-39.56l-64-224c-3.925-13.737-16.482-23.209-30.769-23.209zm-288-80a48 48 2700 1 0 96 0 48 48 2700 1 0-96 0zm192 0a48 48 2700 1 0 96 0 48 48 2700 1 0-96 0zm64 240h-64v-64h-64v64h-64v64h64v64h64v-64h64z" transform="scale(1 -1) translate(0 -480)"/></svg><span class="product_loop_button_text">Add to Order</a>	</div>
-
-
+      <div class="product">
+      <div class="astra-shop-thumbnail-wrap"><a href="https://www.airwaresales.com.au/product/kelvinator-kwh39hrf-3-9kw-reverse-cycle/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300" height="300" src="https://www.airwaresales.com.au/wp-content/uploads/2017/08/kelvinator-reverse-cycle-wall-unit-300x300.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" srcset="https://www.airwaresales.com.au/wp-content/uploads/2017/08/kelvinator-reverse-cycle-wall-unit-300x300.jpg 300w, https://www.airwaresales.com.au/wp-content/uploads/2017/08/kelvinator-reverse-cycle-wall-unit-1024x1024.jpg 1024w, https://www.airwaresales.com.au/wp-content/uploads/2017/08/kelvinator-reverse-cycle-wall-unit-225x225.jpg 225w, https://www.airwaresales.com.au/wp-content/uploads/2017/08/kelvinator-reverse-cycle-wall-unit-768x768.jpg 768w, https://www.airwaresales.com.au/wp-content/uploads/2017/08/kelvinator-reverse-cycle-wall-unit-500x500.jpg 500w, https://www.airwaresales.com.au/wp-content/uploads/2017/08/kelvinator-reverse-cycle-wall-unit-100x100.jpg 100w, https://www.airwaresales.com.au/wp-content/uploads/2017/08/kelvinator-reverse-cycle-wall-unit.jpg 1200w" sizes="(max-width: 300px) 100vw, 300px"></a></div>
+      <span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data='{"internal_id":2228,"item_id":2228,"item_name":"Kelvinator KWH39HRF (3.9kW) Reverse Cycle","sku":"KWH39HRF","price":819,"stocklevel":null,"stockstatus":"instock","google_business_vertical":"retail","item_category":"Window Air Conditioners","id":2228,"productlink":"https:\/\/www.airwaresales.com.au\/product\/kelvinator-kwh39hrf-3-9kw-reverse-cycle\/","item_list_name":"General Product List","index":1,"item_brand":""}'></span><div class="astra-shop-summary-wrap">                   <span class="ast-woo-product-category">
+      Window Air Conditioners                 </span>
+      <a href="https://www.airwaresales.com.au/product/kelvinator-kwh39hrf-3-9kw-reverse-cycle/" class="ast-loop-product__link"><h2 class="woocommerce-loop-product__title">Kelvinator KSD39HRF (3.9kW) Reverse Cycle</h2></a><div class="label-wrap itwapl-none label-blue itwapl-alignnone itwapl-shape-circle  label-wrap-8548">
+      <span class="woocommerce-advanced-product-label product-label label-blue">
+      </span>
       </div>
-      </div>
-      </article>
-
-      <article class="item mk--col mk--col--3-12 post-7752 product type-product status-publish has-post-thumbnail pwb-brand-kelvinator product_cat-hi-wall-split-airconditioners product_tag-5kw product_tag-inverter product_tag-kelvinator product_tag-reverse-cycle product_tag-split-system product_shipping_class-store-pickup last instock sale featured taxable shipping-taxable purchasable product-type-simple">
-      <div class="mk-product-holder">
-      <div class="product-loop-thumb">
-      <span class="onsale">Sale</span><a href="https://www.airwaresales.com.au/product/kelvinator-ksd50hwj/" class="product-link"><img src="https://www.airwaresales.com.au/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5r08hhc7i39jyp4kzv6dtn3bscia2cx80opw0.png" data-mk-image-src-set='{"default":"https://www.airwaresales.com.au/wp-content/uploads/bfi_thumb/kelvinator-ksv-models-ocbwsu14smbcxmzmtvsdqi0n5mhs4qe23b1ku2ayvk.jpg","2x":"https://www.airwaresales.com.au/wp-content/uploads/bfi_thumb/kelvinator-ksv-models-ocbwsu189lupmui4q4dmia9gs9tcq8dcngg5n1mbs0.jpg","mobile":"","responsive":"true"}' class="product-loop-image" alt="Kelvinator KSD50HWJ" title="Kelvinator KSD50HWJ" itemprop="image" /><span class="product-loading-icon added-cart"></span></a>
-      <div class="label-wrap itwapl-none label-black itwapl-alignnone itwapl-shape-circle  label-wrap-7800">
-      <span class="woocommerce-advanced-product-label product-label label-black" >
-      Offer available in QLD & VIC Only                </span>
-      </div>
+      <script type="text/javascript">
+      jQuery("head").append( "<style>.label-wrap.label-wrap-8548{top:; right:; }</style>" );
+      </script>
+      <span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>819.00</bdi></span></span>
+      <a href="?add-to-cart=2228" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart " data-product_id="2228" data-product_sku="KWH39HRF" aria-label="Add to cart: “Kelvinator KWH39HRF (3.9kW) Reverse Cycle”" aria-describedby="" rel="nofollow">Add to cart</a>
       </div>
       </div>
       </body>
