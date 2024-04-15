@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'items#index'
+
+  mount Yabeda::Prometheus::Exporter, at: "/metrics"
   namespace :items do
     resource :refresh, only: :update
   end

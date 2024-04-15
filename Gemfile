@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.0"
+ruby "3.3.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
@@ -47,6 +47,14 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'jsonapi-serializer'
 gem 'rack-cors'
+
+# Monitoring
+gem 'yabeda-prometheus'
+gem 'yabeda-puma-plugin'
+gem 'yabeda-rails'
+
+# gem 'influxdb-rails', git: 'git@github.com:influxdata/influxdb-rails.git', branch: 'master'
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"

@@ -38,3 +38,4 @@
 !/app/assets/builds/.keep
 /public/assets
 .byebug_history
+.env

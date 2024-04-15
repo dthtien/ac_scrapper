@@ -1,11 +1,7 @@
 # syntax = docker/dockerfile:1
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.0.0
-FROM ruby:$RUBY_VERSION-slim as base
-
-LABEL fly_launch_runtime="rails"
-
+FROM ruby:3.3.0-bullseye as base
 # Rails app lives here
 WORKDIR /rails
 
@@ -25,12 +21,13 @@ FROM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential libpq-dev redis
+    apt-get install --no-install-recommends -y build-essential libpq-dev
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle _${BUNDLER_VERSION}_ install && \
     bundle exec bootsnap precompile --gemfile
+
 
 # Copy application code
 COPY . .
@@ -47,7 +44,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y postgresql-client redis && \
+    apt-get install --no-install-recommends -y postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy built application from previous stage

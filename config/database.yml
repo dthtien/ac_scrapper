@@ -84,7 +84,8 @@ test:
 #
 production:
   <<: *default
-  host: db
-  database: ac_scrapper_production
-  username: <%= ENV["AC_SCRAPPER_DATABASE_USERNAME"] || 'postgres' %>
-  password: <%= ENV["AC_SCRAPPER_DATABASE_PASSWORD"] || 'pwd' %>
+  host: <%= ENV["DATABASE_HOST"] || 'db' %>
+  port: <%= ENV["DATABASE_PORT"] || '5432' %>
+  database: <%= ENV["DATABASE_NAME"] || 'ac_scrapper' %>
+  username: <%= ENV["DATABASE_USERNAME"] || 'postgres' %>
+  password: <%= ENV["DATABASE_PASSWORD"] || 'pwd' %>

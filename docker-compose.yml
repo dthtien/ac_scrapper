@@ -26,7 +26,6 @@ services:
       # - "6379:6379"
 
   migration: &migration
-    container_name: migration
     restart: on-failure:10
     build:
       context: .
@@ -43,7 +42,7 @@ services:
       - app-network
 
     environment:
-      AC_SCRAPPER_DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       UN: ${UN}
       PW: ${PW}
@@ -52,13 +51,15 @@ services:
 
   backend: &backend
     <<: *migration
-    container_name: backend
     depends_on:
       - db
       - migration
     command: bundle exec rails s -b 0.0.0.0 -p 3000
     ports:
       - 3000:3000
+    deploy:
+      mode: replicated
+      replicas: 2
 
   web:
     build:
@@ -67,6 +68,7 @@ services:
     depends_on:
       - backend
     restart: on-failure:3
+
     ports:
       - 80:80
       - 443:443
