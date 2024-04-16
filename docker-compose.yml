@@ -91,7 +91,6 @@ services:
 
   # sidekiq:
     # <<: *backend
-    # container_name: hothealth-sidekiq
     # command: bundle exec sidekiq -C config/sidekiq.yml
     # volumes:
       # - sidekiq-logs:/app/log
