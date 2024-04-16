@@ -27,9 +27,7 @@ services:
 
   migration: &migration
     restart: on-failure:10
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/dthtien/ac_scrapper:latest
     depends_on:
       - db
     volumes:
