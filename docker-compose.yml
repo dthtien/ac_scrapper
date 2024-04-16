@@ -57,9 +57,6 @@ services:
     command: bundle exec rails s -b 0.0.0.0 -p 3000
     ports:
       - 3000:3000
-    deploy:
-      mode: replicated
-      replicas: 2
 
   web:
     build:
