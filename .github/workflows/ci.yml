@@ -37,7 +37,7 @@ jobs:
           ruby-version: 3.3.0
           bundler-cache: true
       - name: Preparing database
-        run: bundle exec rake db:setup
+        run: bundle exec rails db:setup db:migrate
 
       - name: Run tests
         run: bundle exec rspec
